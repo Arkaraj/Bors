@@ -1,6 +1,6 @@
 # Bors
 
-A Simple rest api (CRUD) for dogs, made with django framework python.
+A Simple rest api (CRUD) for dogs, made with django framework (MVT) python.
 
 ## Setting up Django
 
@@ -15,6 +15,10 @@ python manage.py migrate
 
 ## Creating SuperUser
 python manage.py createsuperuser
+
+## Creating Tables
+python manage.py makemigrations
+python manage.py migrate --run-syncdb
 
 ```
 
