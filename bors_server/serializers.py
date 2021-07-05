@@ -10,6 +10,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class DogSerializer(serializers.ModelSerializer):
+    owner = UserSerializer(read_only=True)
+
     class Meta:
         model = Dog
         # fields = ('name')

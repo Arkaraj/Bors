@@ -5,19 +5,6 @@ from .serializers import UserSerializer, DogSerializer
 from .models import User, Dog
 
 
-# Create your views here.
-
-
-class UserViewSet(APIView):
-    def get(self, request):
-        users = User.objects.all().order_by("id")
-        serializer = UserSerializer(users, many=True)
-        return Response(serializer.data)
-
-    def post(self, request):
-        pass
-
-
 @api_view(['GET'])
 def getAllDogs(request):
     dogs = Dog.objects.all().order_by("id")
@@ -27,10 +14,33 @@ def getAllDogs(request):
 
 @api_view(['GET'])
 def getSpecificDog(request, id=None):
-    # pk - primary key
     dog = Dog.objects.get(id=id)
     serializer = DogSerializer(dog)
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+def addDog(request):
+    serializer = DogSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
+
+
+@api_view(['PUT'])
+def addOwnerToDog(request, id):
+    dog = Dog.objects.get(id=id)
+    serializer = DogSerializer(instance=dog, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
+
+
+@api_view(['DELETE'])
+def removeDog(request, id=None):
+    dog = Dog.objects.get(id=id)
+    dog.delete()
+    return Response("Deleted item sucessfully!")
 
 
 @api_view(['GET'])
@@ -45,4 +55,12 @@ def getSpecificUser(request, id=None):
     # pk - primary key
     user = User.objects.get(id=id)
     serializer = UserSerializer(user)
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+def addUser(request):
+    serializer = UserSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
     return Response(serializer.data)

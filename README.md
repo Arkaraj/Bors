@@ -37,10 +37,10 @@ https://docs.djangoproject.com/en/3.2/intro/tutorial01/
 
 - [x] GET api/v1/dogs - Get all Dogs
 - [x] GET api/v1/dogs/:id - Get specific Dog
-- [ ] POST api/v1/dogs - add new Dogs
-- [ ] PUT api/v1/dogs/:id/:userId - add Dog owner
-- [ ] DELETE api/v1/dogs/:id - delete specific Dog
+- [x] POST api/v1/dogs/add - add new Dogs
+- [x] PUT api/v1/dogs/add/:id - add Dog owner
+- [x] DELETE api/v1/dogs/:id - delete specific Dog
 
 - [x] GET api/v1/users - Get all Users
 - [x] GET api/v1/users/:id - Get specific User
-- [ ] POST api/v1/users - add new User
+- [x] POST api/v1/users - add new User
