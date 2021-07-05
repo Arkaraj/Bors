@@ -7,6 +7,9 @@ from django.db.models.deletion import CASCADE
 class User (models.Model):
     name = models.CharField(max_length=50, null=False, default="")
 
+    def __str__(self):
+        return self.name
+
 
 class Dog (models.Model):
     name = models.CharField(max_length=100, null=False, default="")
@@ -17,3 +20,6 @@ class Dog (models.Model):
     gender = models.CharField(max_length=1, default="M")
     colour = models.CharField(max_length=50, default="brown")
     description = models.CharField(max_length=500, default="Its a cute dog")
+
+    def __str__(self):
+        return self.name
